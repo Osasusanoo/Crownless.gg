@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About • Crownless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="192x192" href="Images/Browser logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <header class="nav-glass sticky top-0 z-50 border-b border-slate-800/70">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="Images/CrownlessggThumbnail.png" alt="Crownless thumbnail" class="h-20 w-auto object-contain">
+        </a>
+        <nav class="flex items-center gap-3 text-sm">
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="index.html">Home</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="about.html">About</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="chart.html">Chart</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="team.html">Team</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-12 lg:px-8">
+      <section class="card rounded-3xl p-8 lg:p-10">
+        <p class="mb-3 inline-flex rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-sm font-medium text-cyan-300">About the project</p>
+        <h1 class="text-3xl font-bold sm:text-4xl">Hii There</h1>
+        <p class="mt-4 text-lg text-slate-300">Crownless.gg is a supporting site and archive for Rovers as they go into their endgame journey and provide clarity. Feel free peruse it and reach out to use if you have any feedback.</p>
+      </section>
+
+      <section class="card relative mt-8 overflow-hidden rounded-3xl p-8 lg:p-10">
+        <img src="Images/Yang yang contact.png" alt="Yang Yang contact background" class="absolute left-0 top-0 h-full w-[55%] object-cover opacity-25" />
+        <div class="relative z-10 ml-auto max-w-2xl rounded-2xl border border-slate-700/80 bg-slate-950/80 p-6 backdrop-blur">
+          <p class="text-lg text-slate-200">Feel like the charts are false, faulty, or you have an idea to improve the site? Contact us with this form.</p>
+          <button id="open-contact-modal" class="mt-6 rounded-full bg-violet-600 px-5 py-3 font-semibold text-white transition hover:bg-violet-500">Contact us</button>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="border-t border-slate-800/70 px-6 py-8 text-sm text-slate-400">
+      <div class="mx-auto flex max-w-7xl items-center justify-start gap-3">
+        <span class="bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-500 bg-clip-text text-xl font-semibold uppercase tracking-[0.35em] text-transparent">CROWNLESS</span>
+        <p>Crownless 1.0 • Built for rovers, designed to grow.</p>
+      </div>
+    </footer>
+
+    <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/70 px-4 backdrop-blur">
+      <div class="w-full max-w-md rounded-3xl border border-slate-700 bg-slate-900 p-6 shadow-2xl">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-semibold text-slate-100">Contact us</h2>
+          <button id="close-contact-modal" class="text-sm text-slate-400 transition hover:text-white">Close</button>
+        </div>
+        <form class="mt-6 space-y-4">
+          <div>
+            <label class="mb-1 block text-sm text-slate-300" for="contact-username">Username (optional)</label>
+            <input id="contact-username" class="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 outline-none" type="text" placeholder="Your name or alias" />
+          </div>
+          <div>
+            <label class="mb-1 block text-sm text-slate-300" for="contact-message">Message</label>
+            <textarea id="contact-message" class="min-h-32 w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 outline-none" placeholder="Tell us what you noticed or what you want improved"></textarea>
+          </div>
+          <button class="w-full rounded-full bg-violet-600 px-4 py-3 font-semibold text-white transition hover:bg-violet-500" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      const modal = document.getElementById('contact-modal');
+      const openButton = document.getElementById('open-contact-modal');
+      const closeButton = document.getElementById('close-contact-modal');
+      const form = document.querySelector('#contact-modal form');
+      const usernameInput = document.getElementById('contact-username');
+      const messageInput = document.getElementById('contact-message');
+
+      const openModal = () => modal.classList.remove('hidden');
+      const closeModal = () => {
+        modal.classList.add('hidden');
+        form?.reset();
+      };
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const message = messageInput?.value.trim();
+        if (!message) {
+          alert('Please enter a message before sending.');
+          return;
+        }
+
+        const username = usernameInput?.value.trim() || 'Anonymous';
+        const subject = `Crownless.gg Feedback from ${username} User`;
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/osasusanoogaming67@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name: username,
+              message,
+              _subject: subject,
+              _captcha: 'false'
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error('Submission failed');
+          }
+
+          alert('Thanks! Your feedback has been sent.');
+          closeModal();
+        } catch (error) {
+          const body = message;
+          const mailtoLink = `mailto:osasusanoogaming67@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoLink;
+          closeModal();
+        }
+      });
+
+      openButton?.addEventListener('click', openModal);
+      closeButton?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+    </script>
+  </body>
+</html>

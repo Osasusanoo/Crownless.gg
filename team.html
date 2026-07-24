@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team • Crownless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="192x192" href="Images/Browser logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <header class="nav-glass sticky top-0 z-50 border-b border-slate-800/70">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="Images/CrownlessggThumbnail.png" alt="Crownless thumbnail" class="h-20 w-auto object-contain">
+        </a>
+        <nav class="flex items-center gap-3 text-sm">
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="index.html">Home</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="about.html">About</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="chart.html">Chart</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="team.html">Team</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-12 lg:px-8">
+      <section class="card rounded-3xl p-8 lg:p-10">
+        <p class="mb-3 inline-flex rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-300">Meet the team</p>
+        <h1 class="text-3xl font-bold sm:text-4xl">A small team with big ideas.</h1>
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <div class="group relative overflow-hidden rounded-2xl border border-amber-500/80 bg-amber-500/20 p-6 transition duration-300 hover:-translate-y-1 hover:bg-amber-500/35 hover:shadow-[0_0_70px_rgba(251,191,36,0.85)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-300/20 via-transparent to-amber-500/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
+            <div class="relative z-10">
+              <h2 class="text-xl font-semibold text-amber-100">Avidius</h2>
+              <p class="mt-2 text-sm text-slate-200">Design lead focused on clean, readable layouts.</p>
+            </div>
+          </div>
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-400/80 bg-slate-400/20 p-6 transition duration-300 hover:-translate-y-1 hover:bg-slate-400/30 hover:shadow-[0_0_70px_rgba(148,163,184,0.7)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-200/20 via-transparent to-slate-500/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
+            <div class="relative z-10">
+              <h2 class="text-xl font-semibold text-slate-100">Abby</h2>
+              <p class="mt-2 text-sm text-slate-200">Product thinker who keeps the experience easy to navigate.</p>
+            </div>
+          </div>
+          <div class="group relative overflow-hidden rounded-2xl border border-pink-400/80 bg-pink-500/20 p-6 transition duration-300 hover:-translate-y-1 hover:bg-pink-500/35 hover:shadow-[0_0_75px_rgba(244,114,182,0.9)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-pink-300/20 via-transparent to-pink-500/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
+            <div class="relative z-10">
+              <h2 class="text-xl font-semibold text-pink-100">Encore</h2>
+              <p class="mt-2 text-sm text-slate-200">Community builder who makes the experience feel welcoming.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="border-t border-slate-800/70 px-6 py-8 text-sm text-slate-400">
+      <div class="mx-auto flex max-w-7xl items-center justify-start gap-3">
+        <span class="bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-500 bg-clip-text text-xl font-semibold uppercase tracking-[0.35em] text-transparent">CROWNLESS</span>
+        <p>Crownless 1.0 • Built for rovers, designed to grow.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

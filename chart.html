@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart • Crownless</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="192x192" href="Images/Browser logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <header class="nav-glass sticky top-0 z-50 border-b border-slate-800/70">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="Images/CrownlessggThumbnail.png" alt="Crownless thumbnail" class="h-20 w-auto object-contain">
+        </a>
+        <nav class="flex items-center gap-3 text-sm">
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="index.html">Home</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="about.html">About</a>
+          <a class="rounded-full px-3 py-2 text-slate-300 transition hover:bg-slate-800 hover:text-white" href="chart.html">Chart</a>
+          <a class="rounded-full px-3 py-2 text-slate-800 transition hover:bg-slate-800 hover:text-white" href="team.html">Team</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-6 py-12 lg:px-8">
+      <section class="card overflow-hidden rounded-3xl">
+        <div class="relative isolate overflow-hidden rounded-3xl border border-slate-700/70 bg-slate-950/80 p-8 lg:p-10">
+          <img src="Images/CrownlessBG.png" alt="Crownless background" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+          <div class="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <h1 class="text-3xl font-bold sm:text-4xl">ToA Boss HP</h1>
+              <p class="mt-2 text-lg text-slate-300">"If it bleeds, it dies"</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700/80 bg-slate-950/80 px-5 py-4 text-sm text-slate-300 backdrop-blur">
+              <p class="font-semibold text-slate-100">Mission metrics</p>
+              <p class="mt-1">A visual snapshot of the current scale.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="timeline-track" class="overflow-x-auto px-8 pb-2 pt-8 lg:px-10">
+          <div class="flex min-w-max gap-4">
+            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
+            <div class="flex justify-center">
+              <img src="Images/crownless-icon.webp" alt="Crownless icon" class="h-14 w-14 rounded-full object-cover" />
+            </div>
+            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.0</div>
+            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
+              <div class="chart-bar w-full rounded-xl bg-violet-600" data-height="40"></div>
+            </div>
+            <p class="mt-4 text-sm font-medium text-slate-300">2,000,000</p>
+          </div>
+
+            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
+              <div class="flex justify-center">
+                <img src="Images/Sentry-Construct-Icon.webp" alt="Sentry Construct icon" class="h-14 w-14 rounded-full object-cover" />
+              </div>
+            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.1</div>
+            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
+              <div class="chart-bar w-full rounded-xl bg-sky-500" data-height="60"></div>
+            </div>
+            <p class="mt-4 text-sm font-medium text-slate-300">3,000,000</p>
+          </div>
+
+            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
+              <div class="flex justify-center">
+                <img src="Images/phantom-feilian-beringal-icon.webp" alt="Phantom Felian icon" class="h-14 w-14 rounded-full object-cover" />
+              </div>
+            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.2</div>
+            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
+              <div class="chart-bar w-full rounded-xl bg-emerald-500" data-height="70"></div>
+            </div>
+            <p class="mt-4 text-sm font-medium text-slate-300">3,500,000</p>
+          </div>
+
+            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
+              <div class="flex justify-center">
+                <img src="Images/Nameless_Explorer_Icon.webp" alt="Nameless Explorer icon" class="h-14 w-14 rounded-full object-cover" />
+              </div>
+            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.3</div>
+            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
+              <div class="chart-bar w-full rounded-xl bg-cyan-400" data-height="70"></div>
+            </div>
+            <p class="mt-4 text-sm font-medium text-slate-300">3,500,000</p>
+          </div>
+            <div class="w-72 shrink-0 rounded-2xl border border-dashed border-slate-600 bg-slate-900/40 p-6 text-center">
+              <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-slate-600 text-2xl font-semibold text-slate-300">?</div>
+              <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">TBU</div>
+              <p class="mt-4 text-sm font-medium text-slate-300">To be updated...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-700/70 px-8 pb-8 pt-6 lg:px-10">
+          <div class="rounded-2xl border border-slate-700/70 bg-slate-900/50 p-4">
+            <div class="mb-3 flex items-center justify-between text-sm text-slate-300">
+              <span>Timeline</span>
+              <span>Drag or swipe to explore</span>
+            </div>
+            <div id="timeline-slider" class="relative h-3 cursor-pointer overflow-hidden rounded-full bg-slate-800">
+              <div id="timeline-fill" class="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-violet-500 via-sky-500 to-emerald-500"></div>
+              <div id="timeline-handle" class="absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border-2 border-white bg-slate-100 shadow-lg"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="border-t border-slate-800/70 px-6 py-8 text-sm text-slate-400">
+      <div class="mx-auto flex max-w-7xl items-center justify-start gap-3">
+        <span class="bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-500 bg-clip-text text-xl font-semibold uppercase tracking-[0.35em] text-transparent">CROWNLESS</span>
+        <p>Crownless 1.0 • Built for rovers, designed to grow.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const bars = document.querySelectorAll('.chart-bar');
+      const cards = document.querySelectorAll('.w-72');
+      const slider = document.getElementById('timeline-slider');
+      const fill = document.getElementById('timeline-fill');
+      const handle = document.getElementById('timeline-handle');
+      const track = document.getElementById('timeline-track');
+
+      const getArrow = (currentValue, previousValue) => {
+        if (currentValue > previousValue) return { icon: '⬆️', color: 'text-red-500' };
+        if (currentValue < previousValue) return { icon: '⬇️', color: 'text-green-500' };
+        return { icon: '＝', color: 'text-sky-500' };
+      };
+
+      const animateBars = () => {
+        bars.forEach((bar, index) => {
+          const rect = bar.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight * 0.9;
+
+          if (isVisible && !bar.dataset.animated) {
+            bar.dataset.animated = 'true';
+            const height = bar.dataset.height;
+            bar.style.transition = `height 900ms ease ${index * 120}ms`;
+            bar.style.height = `${height}%`;
+          }
+        });
+      };
+
+      const updateComparisons = () => {
+        cards.forEach((card, index) => {
+          const indicator = card.querySelector('.comparison-indicator');
+          if (!indicator) return;
+
+          const currentHeight = Number(card.dataset.height || 0);
+          const previousHeight = Number(cards[index - 1]?.dataset.height || currentHeight);
+          const comparison = getArrow(currentHeight, previousHeight);
+          indicator.textContent = comparison.icon;
+          indicator.className = `comparison-indicator mt-3 text-xl font-bold ${comparison.color}`;
+        });
+      };
+
+      document.querySelectorAll('.w-72').forEach((card) => {
+        const marker = document.createElement('div');
+        marker.className = 'comparison-indicator mt-3 text-xl font-bold text-slate-200';
+        marker.textContent = '＝';
+        card.appendChild(marker);
+        card.dataset.height = card.querySelector('.chart-bar')?.dataset.height || '0';
+      });
+
+      const updateSlider = (percent) => {
+        const clamped = Math.min(Math.max(percent, 0), 100);
+        fill.style.width = `${clamped}%`;
+        handle.style.left = `${clamped}%`;
+        const scrollAmount = (track.scrollWidth - track.clientWidth) * (clamped / 100);
+        track.scrollLeft = scrollAmount;
+      };
+
+      const onSliderPointer = (event) => {
+        const rect = slider.getBoundingClientRect();
+        const percent = ((event.clientX - rect.left) / rect.width) * 100;
+        updateSlider(percent);
+      };
+
+      slider.addEventListener('pointerdown', (event) => {
+        slider.setPointerCapture(event.pointerId);
+        onSliderPointer(event);
+      });
+      slider.addEventListener('pointermove', (event) => {
+        if (event.buttons !== 1) return;
+        onSliderPointer(event);
+      });
+      slider.addEventListener('click', onSliderPointer);
+
+      updateComparisons();
+      updateSlider(0);
+      window.addEventListener('scroll', animateBars);
+      window.addEventListener('load', animateBars);
+    </script>
+  </body>
+</html>
