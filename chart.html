@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png" sizes="192x192" href="Images/Browser logo.png" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="bosses-data.js"></script>
   </head>
   <body class="min-h-screen antialiased">
     <header class="nav-glass sticky top-0 z-50 border-b border-slate-800/70">
@@ -42,50 +43,9 @@
         </div>
 
         <div id="timeline-track" class="overflow-x-auto px-8 pb-2 pt-8 lg:px-10">
-          <div class="flex min-w-max gap-4">
-            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
-            <div class="flex justify-center">
-              <img src="Images/crownless-icon.webp" alt="Crownless icon" class="h-14 w-14 rounded-full object-cover" />
-            </div>
-            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.0</div>
-            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
-              <div class="chart-bar w-full rounded-xl bg-violet-600" data-height="40"></div>
-            </div>
-            <p class="mt-4 text-sm font-medium text-slate-300">2,000,000</p>
-          </div>
+          <div id="boss-row" class="flex min-w-max gap-4">
+            <!-- boss cards get injected here by script.js -->
 
-            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
-              <div class="flex justify-center">
-                <img src="Images/Sentry-Construct-Icon.webp" alt="Sentry Construct icon" class="h-14 w-14 rounded-full object-cover" />
-              </div>
-            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.1</div>
-            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
-              <div class="chart-bar w-full rounded-xl bg-sky-500" data-height="60"></div>
-            </div>
-            <p class="mt-4 text-sm font-medium text-slate-300">3,000,000</p>
-          </div>
-
-            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
-              <div class="flex justify-center">
-                <img src="Images/phantom-feilian-beringal-icon.webp" alt="Phantom Felian icon" class="h-14 w-14 rounded-full object-cover" />
-              </div>
-            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.2</div>
-            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
-              <div class="chart-bar w-full rounded-xl bg-emerald-500" data-height="70"></div>
-            </div>
-            <p class="mt-4 text-sm font-medium text-slate-300">3,500,000</p>
-          </div>
-
-            <div class="w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center">
-              <div class="flex justify-center">
-                <img src="Images/Nameless_Explorer_Icon.webp" alt="Nameless Explorer icon" class="h-14 w-14 rounded-full object-cover" />
-              </div>
-            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">V3.3</div>
-            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
-              <div class="chart-bar w-full rounded-xl bg-cyan-400" data-height="70"></div>
-            </div>
-            <p class="mt-4 text-sm font-medium text-slate-300">3,500,000</p>
-          </div>
             <div class="w-72 shrink-0 rounded-2xl border border-dashed border-slate-600 bg-slate-900/40 p-6 text-center">
               <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-slate-600 text-2xl font-semibold text-slate-300">?</div>
               <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">TBU</div>
@@ -118,6 +78,28 @@
 
     <script src="script.js"></script>
     <script>
+      const bossRow = document.getElementById('boss-row');
+      const placeholderCard = bossRow.querySelector('.border-dashed');
+      const maxHp = Math.max(...BOSSES.map(b => b.hp));
+
+      BOSSES.forEach(boss => {
+        const heightPercent = Math.round((boss.hp / maxHp) * 70);
+
+        const card = document.createElement('div');
+        card.className = 'w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center';
+        card.innerHTML = `
+          <div class="flex justify-center">
+            <img src="${boss.icon}" alt="${boss.name} icon" class="h-14 w-14 rounded-full object-cover" />
+          </div>
+          <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">${boss.version}</div>
+          <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
+            <div class="chart-bar w-full rounded-xl" style="background-color: ${boss.color};" data-height="${heightPercent}"></div>
+          </div>
+          <p class="mt-4 text-sm font-medium text-slate-300">${boss.hp.toLocaleString()}</p>
+        `;
+
+        bossRow.insertBefore(card, placeholderCard);
+      });
       const bars = document.querySelectorAll('.chart-bar');
       const cards = document.querySelectorAll('.w-72');
       const slider = document.getElementById('timeline-slider');
