@@ -42,14 +42,34 @@
           </div>
         </div>
 
-        <div id="timeline-track" class="overflow-x-auto px-8 pb-2 pt-8 lg:px-10">
-          <div id="boss-row" class="flex min-w-max gap-4">
-            <!-- boss cards get injected here by script.js -->
+        <div class="space-y-8 px-8 pt-8 lg:px-10">
+          <div>
+            <div class="mb-3">
+              <h2 class="text-xl font-semibold text-slate-100">Floor 1</h2>
+            </div>
+            <div id="timeline-track-floor-1" class="overflow-x-auto pb-2">
+              <div id="boss-row" class="flex min-w-max gap-4">
+                <div class="w-72 shrink-0 rounded-2xl border border-dashed border-slate-600 bg-slate-900/40 p-6 text-center">
+                  <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-slate-600 text-2xl font-semibold text-slate-300">?</div>
+                  <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">TBU</div>
+                  <p class="mt-4 text-sm font-medium text-slate-300">To be updated...</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <div class="w-72 shrink-0 rounded-2xl border border-dashed border-slate-600 bg-slate-900/40 p-6 text-center">
-              <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-slate-600 text-2xl font-semibold text-slate-300">?</div>
-              <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">TBU</div>
-              <p class="mt-4 text-sm font-medium text-slate-300">To be updated...</p>
+          <div>
+            <div class="mb-3">
+              <h2 class="text-xl font-semibold text-slate-100">Floor 2</h2>
+            </div>
+            <div id="timeline-track-floor-2" class="overflow-x-auto pb-2">
+              <div id="boss-row-floor-2" class="flex min-w-max gap-4">
+                <div class="w-72 shrink-0 rounded-2xl border border-dashed border-slate-600 bg-slate-900/40 p-6 text-center">
+                  <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-slate-600 text-2xl font-semibold text-slate-300">?</div>
+                  <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">TBU</div>
+                  <p class="mt-4 text-sm font-medium text-slate-300">Floor 2 data coming soon</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -76,6 +96,7 @@
       </div>
     </footer>
 
+    <script src="bosses-data2.js"></script>
     <script src="script.js"></script>
     <script>
       const bossRow = document.getElementById('boss-row');
@@ -100,12 +121,40 @@
 
         bossRow.insertBefore(card, placeholderCard);
       });
+
+      const floorTwoRow = document.getElementById('boss-row-floor-2');
+      const floorTwoPlaceholder = floorTwoRow.querySelector('.border-dashed');
+      const floorTwoChartData = BOSSES2 || [];
+
+      if (floorTwoChartData.length) {
+        const secondMaxHp = Math.max(...floorTwoChartData.map(b => b.hp));
+        floorTwoChartData.forEach(boss => {
+          const heightPercent = Math.round((boss.hp / secondMaxHp) * 70);
+          const card = document.createElement('div');
+          card.className = 'w-72 shrink-0 rounded-2xl border border-slate-700 bg-slate-900/60 p-6 text-center';
+          card.innerHTML = `
+            <div class="flex justify-center">
+              <img src="${boss.icon}" alt="${boss.name} icon" class="h-14 w-14 rounded-full object-cover" />
+            </div>
+            <div class="mx-auto mt-3 inline-flex rounded-md bg-red-600 px-3 py-1 text-sm font-semibold text-black">${boss.version}</div>
+            <div class="mx-auto mt-5 flex h-56 max-w-[7rem] items-end justify-center rounded-2xl bg-slate-800/80 p-3">
+              <div class="chart-bar w-full rounded-xl" style="background-color: ${boss.color};" data-height="${heightPercent}"></div>
+            </div>
+            <p class="mt-4 text-sm font-medium text-slate-300">${boss.hp.toLocaleString()}</p>
+          `;
+          floorTwoRow.insertBefore(card, floorTwoPlaceholder);
+        });
+      }
+
       const bars = document.querySelectorAll('.chart-bar');
       const cards = document.querySelectorAll('.w-72');
       const slider = document.getElementById('timeline-slider');
       const fill = document.getElementById('timeline-fill');
       const handle = document.getElementById('timeline-handle');
-      const track = document.getElementById('timeline-track');
+      const tracks = [
+        document.getElementById('timeline-track-floor-1'),
+        document.getElementById('timeline-track-floor-2')
+      ];
 
       const getArrow = (currentValue, previousValue) => {
         if (currentValue > previousValue) return { icon: '⬆️', color: 'text-red-500' };
@@ -152,8 +201,11 @@
         const clamped = Math.min(Math.max(percent, 0), 100);
         fill.style.width = `${clamped}%`;
         handle.style.left = `${clamped}%`;
-        const scrollAmount = (track.scrollWidth - track.clientWidth) * (clamped / 100);
-        track.scrollLeft = scrollAmount;
+
+        tracks.forEach((track) => {
+          const scrollAmount = (track.scrollWidth - track.clientWidth) * (clamped / 100);
+          track.scrollLeft = scrollAmount;
+        });
       };
 
       const onSliderPointer = (event) => {
