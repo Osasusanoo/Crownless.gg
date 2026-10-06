@@ -10,6 +10,6 @@ with open('bosses-data.js', 'w', encoding='utf-8') as f:
         f.write(
             f'  {{ name: "{b["name"]}", icon: "{b["F4 Boss"]}", '
             f'version: "{b["season"]}", color: "{b["color"]}", '
-            f'hp: {b["F4 total HP"]} }},\n'
+            f'hp: {b["F1 total"]} }},\n'
         )
     f.write('];\n')
