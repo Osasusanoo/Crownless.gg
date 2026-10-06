@@ -13,3 +13,6 @@ HTML, CSS, and Tailwind. Hosted on GitHub Pages.
 
 ## Data
 Boss stats are kept in bosses.csv and converted to bosses-data.js by build_bosses.py.
+
+## Credits
+Shout outs to: 1Caiser for the data
